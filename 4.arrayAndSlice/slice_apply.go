@@ -44,10 +44,41 @@ func main(){
 	fmt.Printf("%v\n",s4r)
 
 	//5.字节数组对比函数
-
+	resC :=Compare([]byte("123"),[]byte("123"))
+	fmt.Printf("%v\n",resC)
 	//6.搜索及排序切片和数组
-
+	/*
+		`sort包` 来实现常见的搜索和排序操作
+		1.Types -- 这样的函数用来排序 TypesAreSorted 这样的函数用来检查是否排序
+			Ints(a []int) 排序 int 类型的切片排序 默认升序
+			IntsAreSorted(a []int) bool 检查是否排序一个int数组活切片
+			类似的:Float64s(a []float64),Strings(a []string)...
+		2.搜索 -- SearchTypes 这样的函数来搜索 数组或切片中搜索一个元素(二分法) -- 该数组或切片必须先被排序!!!
+			SearchInts(a []int, n int) int 进行搜索，并返回对应结果的索引值
+			类似的:func SearchStrings(a []string, x string) int
+	 */
 	//7.append 函数常见操作
+	//见
+
 
 	//8.切片和垃圾回收
+}
+
+func Compare(a, b[]byte) int {
+	for i:=0; i < len(a) && i < len(b); i++ {
+		switch {
+		case a[i] > b[i]:
+			return 1
+		case a[i] < b[i]:
+			return -1
+		}
+	}
+	// 数组的长度可能不同
+	switch {
+	case len(a) < len(b):
+		return -1
+	case len(a) > len(b):
+		return 1
+	}
+	return 0 // 数组相等
 }
